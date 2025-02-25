@@ -29,7 +29,7 @@ public class OrderCreateCommandHandler {
 
     public OrderCreateCommandHandler(OrderCreateHelper orderCreateHelper,
                                      OrderDataMapper orderDataMapper,
-                                     OrderCreatedPaymentRequestMessagePublisher orderCreatedPaymentRequestMessagePublisher) {
+                                     OrderCreatedPaymentRequestMessagePublisher orderCreatedPaymentRequestMessagePublisher, ApplicationDomainEventPublisher applicationDomainEventPublisher) {
         this.orderCreateHelper = orderCreateHelper;
         this.orderDataMapper = orderDataMapper;
         this.orderCreatedPaymentRequestMessagePublisher = orderCreatedPaymentRequestMessagePublisher;
