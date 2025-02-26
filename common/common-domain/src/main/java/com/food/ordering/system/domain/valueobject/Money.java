@@ -6,7 +6,6 @@ import lombok.Getter;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-@Getter
 @EqualsAndHashCode
 public class Money {
 
@@ -40,5 +39,9 @@ public class Money {
 
     public Money multiply( int multiplier) {
         return new Money(setScale(this.amount.multiply(new BigDecimal(multiplier))));
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
     }
 }

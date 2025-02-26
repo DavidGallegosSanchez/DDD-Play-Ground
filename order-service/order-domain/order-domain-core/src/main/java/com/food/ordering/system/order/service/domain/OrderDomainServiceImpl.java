@@ -8,13 +8,16 @@ import com.food.ordering.system.order.service.domain.event.OrderCreatedEvent;
 import com.food.ordering.system.order.service.domain.event.OrderPaidEvent;
 import com.food.ordering.system.order.service.domain.exception.OrderDomainException;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-@Slf4j
 public class OrderDomainServiceImpl implements OrderDomainService {
+
+    private static final Logger log = LoggerFactory.getLogger(OrderDomainServiceImpl.class);
 
     private static final String UTC = "UTC";
 
@@ -56,7 +59,7 @@ public class OrderDomainServiceImpl implements OrderDomainService {
 
     private void validateRestaurant(Restaurant restaurant) {
         if(!restaurant.isActive()) {
-            throw new OrderDomainException("Restaurant with id: " + restaurant.getId().getValue() +
+            throw new OrderDomainException("Restaurant with id " + restaurant.getId().getValue() +
                     " is currently not active!");
         }
     }

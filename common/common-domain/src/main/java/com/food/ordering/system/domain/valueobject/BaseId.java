@@ -3,7 +3,6 @@ package com.food.ordering.system.domain.valueobject;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-@Getter
 @EqualsAndHashCode
 public abstract class BaseId<T> {
 
@@ -11,5 +10,9 @@ public abstract class BaseId<T> {
 
     protected BaseId(T value) {
         this.value = value;
+    }
+
+    public T getValue() {
+        return value;
     }
 }

@@ -6,7 +6,6 @@ import com.food.ordering.system.domain.valueobject.OrderId;
 import com.food.ordering.system.order.service.domain.valueobject.OrderItemId;
 import lombok.Getter;
 
-@Getter
 public class OrderItem extends BaseEntity<OrderItemId> {
 
     private OrderId orderId;
@@ -14,6 +13,26 @@ public class OrderItem extends BaseEntity<OrderItemId> {
     private final int quantity;
     private final Money price;
     private final Money subTotal;
+
+    public OrderId getOrderId() {
+        return orderId;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public Money getPrice() {
+        return price;
+    }
+
+    public Money getSubTotal() {
+        return subTotal;
+    }
 
     void initializeOrderItem(OrderId orderId, OrderItemId orderItemId) {
         this.orderId = orderId;

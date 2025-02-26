@@ -8,9 +8,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-@Getter
 @Builder
-@AllArgsConstructor
 public class OrderItem {
 
     @NotNull
@@ -24,4 +22,27 @@ public class OrderItem {
 
     @NotNull
     private final BigDecimal subTotal;
+
+    public OrderItem(UUID productId, Integer quantity, BigDecimal price, BigDecimal subTotal) {
+        this.productId = productId;
+        this.quantity = quantity;
+        this.price = price;
+        this.subTotal = subTotal;
+    }
+
+    public @NotNull UUID getProductId() {
+        return productId;
+    }
+
+    public @NotNull Integer getQuantity() {
+        return quantity;
+    }
+
+    public @NotNull BigDecimal getPrice() {
+        return price;
+    }
+
+    public @NotNull BigDecimal getSubTotal() {
+        return subTotal;
+    }
 }

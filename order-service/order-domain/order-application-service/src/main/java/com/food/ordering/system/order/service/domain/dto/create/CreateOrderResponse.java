@@ -8,9 +8,7 @@ import lombok.Getter;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
-@Getter
 @Builder
-@AllArgsConstructor
 public class CreateOrderResponse {
 
     @NotNull
@@ -22,4 +20,21 @@ public class CreateOrderResponse {
     @NotNull
     private final String message;
 
+    public CreateOrderResponse(UUID orderTrackingId, OrderStatus orderStatus, String message) {
+        this.orderTrackingId = orderTrackingId;
+        this.orderStatus = orderStatus;
+        this.message = message;
+    }
+
+    public @NotNull UUID getOrderTrackingId() {
+        return orderTrackingId;
+    }
+
+    public @NotNull OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public @NotNull String getMessage() {
+        return message;
+    }
 }

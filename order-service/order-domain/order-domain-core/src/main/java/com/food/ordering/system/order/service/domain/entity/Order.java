@@ -11,7 +11,6 @@ import lombok.Getter;
 import java.util.List;
 import java.util.UUID;
 
-@Getter
 public class Order extends AggregateRoot<OrderId> {
 
     private final CustomerId customerId;
@@ -23,6 +22,38 @@ public class Order extends AggregateRoot<OrderId> {
     private TrackingId trackingId;
     private OrderStatus orderStatus;
     List<String> failureMessages;
+
+    public CustomerId getCustomerId() {
+        return customerId;
+    }
+
+    public RestaurantId getRestaurantId() {
+        return restaurantId;
+    }
+
+    public StreetAddress getDeiveryAddress() {
+        return deiveryAddress;
+    }
+
+    public Money getPrice() {
+        return price;
+    }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public TrackingId getTrackingId() {
+        return trackingId;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public List<String> getFailureMessages() {
+        return failureMessages;
+    }
 
     public void initializeOrder() {
         setId(new OrderId(UUID.randomUUID()));
@@ -63,7 +94,7 @@ public class Order extends AggregateRoot<OrderId> {
                     return orderItem.getSubTotal();
                 }).reduce(Money.ZERO, Money::add);
 
-        if(price.equals(orderItemsTotal)) {
+        if(!price.equals(orderItemsTotal)) {
             throw new OrderDomainException("Total price: " + price.getAmount()
             + " is not equal to Order items total: " + orderItemsTotal.getAmount() + "!");
         }

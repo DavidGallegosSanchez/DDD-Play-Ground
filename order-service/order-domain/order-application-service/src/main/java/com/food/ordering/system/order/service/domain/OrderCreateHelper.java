@@ -11,15 +11,18 @@ import com.food.ordering.system.order.service.domain.ports.output.repository.Cus
 import com.food.ordering.system.order.service.domain.ports.output.repository.OrderRepository;
 import com.food.ordering.system.order.service.domain.ports.output.repository.RestaurantRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.UUID;
 
-@Slf4j
 @Component
 public class OrderCreateHelper {
+
+    private static final Logger log = LoggerFactory.getLogger(OrderCreateHelper.class);
 
     private final OrderDomainService orderDomainService;
     private final OrderRepository orderRepository;

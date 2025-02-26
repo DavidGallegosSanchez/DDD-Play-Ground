@@ -5,10 +5,17 @@ import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.domain.valueobject.ProductId;
 import lombok.Getter;
 
-@Getter
 public class Product extends BaseEntity<ProductId> {
     private String name;
     private Money price;
+
+    public String getName() {
+        return name;
+    }
+
+    public Money getPrice() {
+        return price;
+    }
 
     public void updateWithConfirmedNameANdPrice(String name, Money price) {
         this.name = name;
